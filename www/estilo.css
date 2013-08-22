@@ -1,0 +1,291 @@
+/*****************************************************************************
+ * Estilos basicos de la interfaz de usuario                                 *
+ *****************************************************************************/
+
+/* Fuentes */
+
+@font-face {
+    font-family: 'News Cycle';
+    src: local('☺'), url('newscycle-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+  }
+
+@font-face {
+    font-family: 'Droid';
+    src: local('☺'), url('DroidSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+  }
+
+/* Valores globales predeterminados */
+
+* {
+    font-family: 'News Cycle';
+    margin: 0px;
+    padding: 0px;
+    font-size: 1em;
+    color: #000;
+    cursor: default;
+  }
+
+/* Cuerpo y elementos principales preparados para cajas flexibles */
+
+body {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+  }
+
+body > .flex {
+    position: relative;
+    display: -webkit-flex;
+    -ms-flex-direction: row;
+    display: -ms-flex;
+    -ms-flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    border: 1px #000 solid;
+    overflow: auto;
+    float: left;
+  }
+
+body > * > .flex {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+/* Valor global de color */
+
+input, textarea, select {
+    background: rgba(255,255,255,0.25);
+    background: -ms-linear-gradient(-45deg,  rgba(150,150,150,0.15) 0%,
+                                             rgba(255,255,255,0.2) 100%);
+    background: -moz-linear-gradient(-45deg,  rgba(150,150,150,0.15) 0%,
+                                              rgba(255,255,255,0.2) 100%);
+    background: -webkit-gradient(linear, left top, right bottom,
+                                 color-stop(0%,rgba(150,150,150,0.15)),
+                                 color-stop(100%,rgba(255,255,255,0.2)));
+    background: -webkit-linear-gradient(-45deg,  rgba(150,150,150,0.15) 0%,
+                                                 rgba(255,255,255,0.2) 100%);
+    background: -o-linear-gradient(-45deg,  rgba(150,150,150,0.15) 0%,
+                                            rgba(255,255,255,0.2) 100%);
+    background: linear-gradient(135deg,  rgba(150,150,150,0.15) 0%,
+                                         rgba(255,255,255,0.2) 100%);
+  }
+
+input[type="button"], input[type="reset"], input[type="submit"], a,
+a:hover, a:visited, a:link, input[type="color"],
+input[type="checkbox"].switch-button {
+    background: -ms-linear-gradient(-45deg,  rgba(255,255,255,0.25) 0%,
+                                             rgba(0,0,0,0.5) 100%);
+    background: -moz-linear-gradient(-45deg,  rgba(255,255,255,0.25) 0%,
+                                              rgba(0,0,0,0.5) 100%);
+    background: -webkit-gradient(linear, left top, right bottom,
+                                 color-stop(0%,rgba(255,255,255,0.25)),
+                                 color-stop(100%,rgba(0,0,0,0.25)));
+    background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,0.25) 0%,
+                                                 rgba(0,0,0,0.5) 100%);
+    background: -o-linear-gradient(-45deg,  rgba(255,255,255,0.25) 0%,
+                                            rgba(0,0,0,0.5) 100%);
+    background: linear-gradient(135deg,  rgba(255,255,255,0.25) 0%,
+                                         rgba(0,0,0,0.5) 100%);
+  }
+
+input[type="button"]:active, input[type="reset"]:active,
+input[type="submit"]:active, a:active, input[type="color"]:active,
+input[type="checkbox"]:checked.switch-button {
+    background: -ms-linear-gradient(-45deg,  rgba(0,0,0,0.25) 0%,
+                                             rgba(255,255,255,0.25) 100%);
+    background: -moz-linear-gradient(-45deg,  rgba(0,0,0,0.25) 0%,
+                                              rgba(255,255,255,0.25) 100%);
+    background: -webkit-gradient(linear, left top, right bottom,
+                                 color-stop(0%,rgba(0,0,0,0.25)),
+                                 color-stop(100%,rgba(255,255,255,0.25)));
+    background: -webkit-linear-gradient(-45deg,  rgba(0,0,0,0.25) 0%,
+                                                 rgba(255,255,255,0.25) 100%);
+    background: -o-linear-gradient(-45deg,  rgba(0,0,0,0.25) 0%,
+                                            rgba(255,255,255,0.25) 100%);
+    background: linear-gradient(135deg,  rgba(0,0,0,0.25) 0%,
+                                         rgba(255,255,255,0.25) 100%);
+  }
+
+progress {
+    background: rgba(255,255,255,0.15);
+  }
+
+/* Valor global de elementos principales de interaccion */
+
+input, textarea, a, a:hover, a:visited, a:active, a:link, select, progress {
+    font-family: 'News Cycle';
+    border: 0px rgba(0,0,0,0.0) groove;
+    border-radius: 0.25em;
+    padding: 0.25em;
+    margin: 0.2em;
+    display: none;
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -o-inline-flex;
+    display: -ms-inline-flex;
+    display: inline-flex;
+    vertical-align: middle;
+    min-height: 1.25em;
+    height: 1.25em;
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3);
+    -webkit-transition: -webkit-transform 0.5s, left 0.5s, top 0.5s,
+                        right 0.5s, bottom 0.5s, border-radius 0.5s,
+                        opacity 0.5s, margin 0.5s, padding 0.5s, min-width 1s,
+                        min-height 1s;
+    -ms-transition: -ms-transform 0.5s, left 0.5s, top 0.5s, right 0.5s,
+                    bottom 0.5s, border-radius 0.5s, opacity 0.5s, margin 0.5s,
+                    padding 0.5s, min-width 1s, min-height 1s;
+    -moz-transition: -moz-transform 0.5s, left 0.5s, top 0.5s, right 0.5s,
+                     bottom 0.5s, border-radius 0.5s, opacity 0.5s,
+                     margin 0.5s, padding 0.5s, min-width 1s, min-height 1s;
+    -o-transition: -o-transform 0.5s, left 0.5s, top 0.5s, right 0.5s,
+                   bottom 0.5s, border-radius 0.5s, opacity 0.5s, margin 0.5s,
+                   padding 0.5s, min-width 1s, min-height 1s;
+    transition: transform 0.5s, left 0.5s, top 0.5s, right 0.5s, bottom 0.5s,
+                border-radius 0.5s, opacity 0.5s, margin 0.5s, padding 0.5s,
+                min-width 1s, min-height 1s;
+  }
+
+input[type="date"], input[type="time"], input[type="week"],
+input[type="month"], select {
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset 0.1em 0.15em 3px 0.1em rgba(0, 0, 0, 0.2);
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    max-width: 10em:
+  }
+
+a, a:hover, a:visited, a:active, a:link, img {
+    text-decoration: none;
+  }
+
+progress {
+    border: 0;
+    border-radius: 0.25em;
+    padding: 0px;
+    width: 10em;
+    max-width: 30em:
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset -0.1em -0.15em 3px 0.1em rgba(255, 255, 255, 0.1),
+  	            inset 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3);
+  }
+
+/* Botones y enlaces como botones */
+
+input[type="button"], input[type="reset"], input[type="submit"], a, a:hover,
+a:visited, a:link, input[type="color"] {
+    height: 1.65em;
+    font-family: 'Droid';
+    white-space: pre;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    word-spacing: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset 0.1em 0.15em 3px 0.1em rgba(255, 255, 255, 0.2);
+  }
+
+/* Entradas de texto */
+
+input[type="text"], input[type="password"], input[type="email"],
+input[type="url"], input[type="number"], input[type="tel"],
+input[type="search"], textarea {
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset 0.1em 0.15em 3px 0.1em rgba(0, 0, 0, 0.2);
+    cursor: text;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    width: 10em;
+  }
+
+textarea {
+    min-height: 2.5em;
+  }
+
+textarea:focus {
+    min-width: 21em;
+    min-height: 7.5em;
+  }
+
+/* Claves */
+
+input[type="password"] {
+    color: rgba(0,0,0,0.25);
+  }
+
+/* Cajas de confirmacion */
+
+input[type="checkbox"], input[type="radio"] {
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset 0.1em 0.15em 3px 0.1em rgba(0, 0, 0, 0.2);
+    width: 1.25em;
+    height: 1.25em;
+    min-width: 1.25em;
+    min-height: 1.25em;
+    max-width: 1.25em;
+    max-height: 1.25em;
+  }
+
+input[type="radio"] {
+    border-radius: 0.75em;
+    opacity: 0.75;
+  }
+
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset 0.1em 0.15em 3px 0.1em rgba(255, 255, 255, 0.2);
+  }
+
+input[type="checkbox"].switch-button {
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset 0.1em 0.15em 3px 0.1em rgba(255, 255, 255, 0.2);
+    width: 1.5em;
+    height: 1.5em;
+    min-width: 1.5em;
+    min-height: 1.5em;
+    max-width: 1.5em;
+    max-height: 1.5em;
+    border-radius: 1em;
+    -webkit-transition: border-radius 0.1s;
+    -ms-transition: border-radius 0.1s;
+    -moz-transition: border-radius 0.1s;
+    -o-transition: border-radius 0.1s;
+    transition: border-radius 0.1s;
+  }
+
+input[type="checkbox"]:checked.switch-button {
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset 0.1em 0.15em 3px 0.1em rgba(100, 100, 100, 0.2);
+    color: rgba(128,128,128,0.5);
+    border-radius: 0.5em;
+  }
+
+/* Selector de color */
+
+input[type="color"] {
+  	box-shadow: 0.1em 0.15em 3px 0.05em rgba(0, 0, 0, 0.3),
+  	            inset 0.1em 0.15em 3px 0.1em rgba(100, 100, 100, 0.2);
+    padding: 0.15em;
+    max-width: 2.25em;
+  }
+

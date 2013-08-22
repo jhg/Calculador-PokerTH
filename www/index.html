@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Calculador PokerTH</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="estilo.css" />
+<script src="jquery.js" type="text/javascript"></script>
+<script src="handlebars.js" type="text/javascript"></script>
+<script src="main.js" type="text/javascript"></script>
+<style>
+body, .select, .select *, select {
+  color: #fff;
+}
+
+.fondo {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url('fondo.png');
+  background-size: 100% 100%;
+}
+
+.carta {
+  background-image: url('baraja.png');
+  background-size: 1300% 400%;
+  width: 12em;
+  height: 16em;
+  box-sizing: border-box;
+  border: 1px #000 
+}
+
+.cC {background-position-y: -0%;}
+.cP {background-position-y: -100%;}
+.cD {background-position-y: -200%;}
+.cT {background-position-y: -300%;}
+
+.cA {background-position-x: -0%;}
+
+.c2 {background-position-x: -100%;}
+.c3 {background-position-x: -200%;}
+.c4 {background-position-x: -300%;}
+.c5 {background-position-x: -400%;}
+.c6 {background-position-x: -500%;}
+.c7 {background-position-x: -600%;}
+.c8 {background-position-x: -700%;}
+.c9 {background-position-x: -800%;}
+.c10 {background-position-x: -900%;}
+
+.cJ {background-position-x: -1000%;}
+.cQ {background-position-x: -1100%;}
+.cK {background-position-x: -1200%;}
+
+.carta-dorso {
+  background-image: url('dorso.png');
+  background-size: 100% 100%;
+  background-position: 0% 0%;
+  box-sizing: border-box;
+}
+
+#tuyas div, #mesa div {
+  float: left;
+  margin: 0.2%;
+}
+
+#tuyas {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+#mesa {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
+
+#tuyas div {
+  width: 49%;
+  height: 99%;
+}
+#mesa div {
+  width: 32.5%;
+  height: 49%;
+}
+
+#selecciona-carta {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+}
+
+#selecciona-carta > div {
+  float: left;
+  width: 6em;
+  height: 8em;
+}
+
+#pantalla {
+  position: fixed;
+  top: 0.1%;
+  right: 0.1%;
+  background: rgba(255,255,255,0.75);
+  width: 50%;
+  height: 40%;
+  padding: 0.5%;
+  box-sizing: border-box;
+  overflow: auto;
+  border-radius: 0.75em;
+  font-size: 1.5em;
+  color: #ff8;
+}
+
+@media (orientation: portrait) {
+#selecciona-carta > div {
+  float: left;
+  width: 10%;
+  height: 12.5%;
+}
+#selecciona-carta > div.cA {
+  clear: left;
+}
+#tuyas {
+  width: 50%;
+  height: 25%;
+}
+#mesa {
+  width: 100%;
+  height: 60%;
+}
+.select {
+  position: fixed;
+  top: 25%;
+  left: 1%;
+}
+}
+
+@media (orientation: landscape) {
+#selecciona-carta > div {
+  float: left;
+  width: 7.675%;
+  height: 24.99%;
+}
+#tuyas {
+  width: 30%;
+  height: 45%;
+}
+#mesa {
+  width: 70%;
+  height: 45%;
+}
+#mesa div {
+  width: 19.5%;
+  height: 85%;
+  margin-top : 3%;
+}
+#pantalla {
+  width: 69.5%;
+  height: 55%;
+  background-image: url('fondo_resultados.png');
+  background-size: 100% 100%;
+}
+.select {
+  position: fixed;
+  top: 45%;
+  left: 1%;
+}
+
+input {
+  color: #fff;
+}
+
+}
+
+@media (min-device-width: 600px) {
+}
+</style>
+</head>
+<body>
+<div class="fondo"></div>
+<div id="pantalla"></div>
+<div id="tuyas">
+<div id="t1" class="carta carta-dorso"></div>
+<div id="t2" class="carta carta-dorso"></div>
+</div>
+<div id="mesa">
+<div id="m1" class="carta carta-dorso"></div>
+<div id="m2" class="carta carta-dorso"></div>
+<div id="m3" class="carta carta-dorso"></div>
+<div id="m4" class="carta carta-dorso"></div>
+<div id="m5" class="carta carta-dorso"></div>
+</div>
+<div class="select"><span>
+<input id="reiniciar" type="button" value="reiniciar" />
+Oponentes:</span>
+<select id="oponentes">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>11</option>
+<option>12</option>
+</select>
+</div>
+<div id="selecciona-carta">
+<div id="CA" class="carta cA cC"></div>
+<div id="C2" class="carta c2 cC"></div>
+<div id="C3" class="carta c3 cC"></div>
+<div id="C4" class="carta c4 cC"></div>
+<div id="C5" class="carta c5 cC"></div>
+<div id="C6" class="carta c6 cC"></div>
+<div id="C7" class="carta c7 cC"></div>
+<div id="C8" class="carta c8 cC"></div>
+<div id="C9" class="carta c9 cC"></div>
+<div id="C10" class="carta c10 cC"></div>
+<div id="CJ" class="carta cJ cC"></div>
+<div id="CQ" class="carta cQ cC"></div>
+<div id="CK" class="carta cK cC"></div>
+<div id="PA" class="carta cA cP"></div>
+<div id="P2" class="carta c2 cP"></div>
+<div id="P3" class="carta c3 cP"></div>
+<div id="P4" class="carta c4 cP"></div>
+<div id="P5" class="carta c5 cP"></div>
+<div id="P6" class="carta c6 cP"></div>
+<div id="P7" class="carta c7 cP"></div>
+<div id="P8" class="carta c8 cP"></div>
+<div id="P9" class="carta c9 cP"></div>
+<div id="P10" class="carta c10 cP"></div>
+<div id="PJ" class="carta cJ cP"></div>
+<div id="PQ" class="carta cQ cP"></div>
+<div id="PK" class="carta cK cP"></div>
+<div id="DA" class="carta cA cD"></div>
+<div id="D2" class="carta c2 cD"></div>
+<div id="D3" class="carta c3 cD"></div>
+<div id="D4" class="carta c4 cD"></div>
+<div id="D5" class="carta c5 cD"></div>
+<div id="D6" class="carta c6 cD"></div>
+<div id="D7" class="carta c7 cD"></div>
+<div id="D8" class="carta c8 cD"></div>
+<div id="D9" class="carta c9 cD"></div>
+<div id="D10" class="carta c10 cD"></div>
+<div id="DJ" class="carta cJ cD"></div>
+<div id="DQ" class="carta cQ cD"></div>
+<div id="DK" class="carta cK cD"></div>
+<div id="TA" class="carta cA cT"></div>
+<div id="T2" class="carta c2 cT"></div>
+<div id="T3" class="carta c3 cT"></div>
+<div id="T4" class="carta c4 cT"></div>
+<div id="T5" class="carta c5 cT"></div>
+<div id="T6" class="carta c6 cT"></div>
+<div id="T7" class="carta c7 cT"></div>
+<div id="T8" class="carta c8 cT"></div>
+<div id="T9" class="carta c9 cT"></div>
+<div id="T10" class="carta c10 cT"></div>
+<div id="TJ" class="carta cJ cT"></div>
+<div id="TQ" class="carta cQ cT"></div>
+<div id="TK" class="carta cK cT"></div>
+</div>
+</body>
+</html>
